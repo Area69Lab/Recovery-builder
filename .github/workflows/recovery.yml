@@ -14,7 +14,7 @@ on:
     types: [started]
 
 env:
-  MANIFEST: git://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-9.0
+  MANIFEST: git://github.com/SKYHAWK-Recovery-Project/platform_manifest_twrp_omni.git -b android-9.0
   DEVICE: rosy
   DT_LINK: https://github.com/JamieHoSzeYui/android_recovery_xiaomi_rosy
   DT_PATH: device/xiaomi/rosy
