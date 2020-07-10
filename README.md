@@ -4,6 +4,10 @@
 ### Users reported build errors forking to own account. ###
 ### To fix this, create a new organization, fork to the new organization. This fixes the problem, for now.
 
+## Important notice 2 ##
+### I realized that some recovery trees has prebuilt kernels, which makes this basically useless. ###
+### If your recovery tree has prebuilt kernel, move to [this](https://github.com/Area69Lab/Recovery-Builder-NoKernel) ###
+
 #### What this is ####
 
 This is an easy way for recovery maintainers or anyone who's interested in building recoveries to finish their dream without a server.
