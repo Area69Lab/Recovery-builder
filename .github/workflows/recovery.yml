@@ -10,16 +10,18 @@ on:
 #      - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
+# Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
   watch:
     types: [started]
 
 env:
-  MANIFEST: git://github.com/SKYHAWK-Recovery-Project/platform_manifest_twrp_omni.git -b android-9.0
-  DEVICE: rosy
-  DT_LINK: https://github.com/JamieHoSzeYui/android_recovery_xiaomi_rosy
-  DT_PATH: device/xiaomi/rosy
-  KERNEL_LINK: https://github.com/Pulkit077/kernel_xiaomi_rosy
-  KERNEL_PATH: kernel/xiaomi/rosy
+  MANIFEST: git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0
+  DEVICE: phoenix
+  DT_LINK: https://github.com/hraj9258/android_device_xiaomi_phoenix
+  DT_PATH: device/xiaomi/phoenix
+  KERNEL_LINK: https://github.com/sm6150-dev/android_kernel_xiaomi_sm6150
+  KERNEL_PATH: kernel/xiaomi/phoenix
   TARGET: recoveryimage
   TZ: Asia/Kolkata
 
