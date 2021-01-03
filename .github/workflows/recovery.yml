@@ -61,5 +61,7 @@ jobs:
        - name: Upload recovery image
          run: |
               cd work/out/target/product/$DEVICE
+              sudo zip -r9 TWRP-phoenix.zip recovery.img
               curl -sL https://git.io/file-transfer | sh
-              ./transfer wet recovery.img    
+              ./transfer wet TWRP-phoenix.zip
+              ./transfer wet recovery.img
