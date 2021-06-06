@@ -1,26 +1,42 @@
 name: Building recovery
 
 on:
-#  release:
-#    types: [published]
-#  push:
-#    branches:
-#      - master
-#    paths:
-#      - '.config'
-#  schedule:
-#    - cron: 0 8 * * 5
-  watch:
-    types: [started]
+  workflow_dispatch:
+    inputs:
+      ManifestLink:
+        description: 'Link For Minimal Recovery Manifest'
+        required: true
+        default: 'https://github.com/PitchBlackRecoveryProject/manifest_pb'
+      ManifestBranch:
+        description: 'Which Branch Would You Like To Sync'
+        required: true
+        default: 'android-9.0'
+      DTLink:
+        description: 'Link For Your Device Tree'
+        required: true
+        default: '##'
+      DTBranch:
+        description: 'Which Branch Would You Like To Clone Your Device Tree'
+        required: true
+        default: '##'
+      Vendor:
+        description: 'Enter Your Device OEM'
+        required: true
+        default: '##'
+      Device:
+        description: 'Enter Your Device Code Name'
+        required: true
+        default: '##'
+
+
 
 env:
-  MANIFEST: git://github.com/SKYHAWK-Recovery-Project/platform_manifest_twrp_omni.git -b android-9.0
-  DEVICE: rosy
-  DT_LINK: https://github.com/JamieHoSzeYui/android_recovery_xiaomi_rosy
-  DT_PATH: device/xiaomi/rosy
-  KERNEL_LINK: https://github.com/Pulkit077/kernel_xiaomi_rosy
-  KERNEL_PATH: kernel/xiaomi/rosy
-  TARGET: recoveryimage
+  MANIFEST: ${{ github.event.inputs.ManifestLink }}
+  MANIFEST_BRANCH: ${{ github.event.inputs.ManifestBranch }}
+  DT_LINK: ${{ github.event.inputs.DTLink }}
+  DT_BRANCH: ${{ github.event.inputs.DTBranch }}
+  VENDOR: ${{ github.event.inputs.Vendor }}
+  DEVICE: ${{ github.event.inputs.Device }}
   TZ: Asia/Kolkata
 
 jobs:
@@ -49,15 +65,14 @@ jobs:
          run: |
              mkdir work
              cd work
-             repo init -u $MANIFEST --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
+             repo init -u $MANIFEST -b $MANIFEST_BRANCH --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
              repo sync -j4
-             git clone $DT_LINK --depth=1 --single-branch $DT_PATH
-             git clone $KERNEL_LINK --depth=1 --single-branch $KERNEL_PATH
-             
+             git clone $DT_LINK -b $DT_BRANCH --depth=1 --single-branch device/$VENDOR/$DEVICE
+
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka recoveryimage
              
        - uses: actions/upload-artifact@v2
          with:
