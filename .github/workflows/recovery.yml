@@ -16,10 +16,10 @@ on:
 env:
   MANIFEST: git://github.com/SKYHAWK-Recovery-Project/platform_manifest_twrp_omni.git -b android-9.0
   DEVICE: rosy
-  DT_LINK: https://github.com/JamieHoSzeYui/android_recovery_xiaomi_rosy
-  DT_PATH: device/xiaomi/rosy
-  KERNEL_LINK: https://github.com/Pulkit077/kernel_xiaomi_rosy
-  KERNEL_PATH: kernel/xiaomi/rosy
+  DT_LINK: https://github.com/knuxdroid/twrp_device_samsung_baffinlite
+  DT_PATH: device/samsung/baffinlite
+  KERNEL_LINK: https://github.com/FFY00/kernel_baffinlite
+  KERNEL_PATH: kernel/samsung/baffinlite
   TARGET: recoveryimage
   TZ: Asia/Kolkata
 
