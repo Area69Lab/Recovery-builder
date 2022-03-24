@@ -14,12 +14,10 @@ on:
     types: [started]
 
 env:
-  MANIFEST: git://github.com/SKYHAWK-Recovery-Project/platform_manifest_twrp_omni.git -b android-9.0
-  DEVICE: rosy
-  DT_LINK: https://github.com/JamieHoSzeYui/android_recovery_xiaomi_rosy
-  DT_PATH: device/xiaomi/rosy
-  KERNEL_LINK: https://github.com/Pulkit077/kernel_xiaomi_rosy
-  KERNEL_PATH: kernel/xiaomi/rosy
+  MANIFEST: git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni
+  DEVICE: j2corelte
+  DT_LINK: https://github.com/twrpdtgen/android_device_samsung_j2corelte
+  DT_PATH: device/samsung/j2corelte
   TARGET: recoveryimage
   TZ: Asia/Kolkata
 
@@ -62,9 +60,9 @@ jobs:
        - uses: actions/upload-artifact@v2
          with:
           name: recoveryzip
-          path: work/out/target/product/*/*.zip
+          path: work/out/target/product/j2corelte/recovery.zip
 
        - uses: actions/upload-artifact@v2
          with:
           name: recoveryimage
-          path: work/out/target/product/*/*.img
+          path: work/out/target/product/j2corelte/recovery.img
