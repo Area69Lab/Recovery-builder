@@ -15,11 +15,11 @@ on:
 
 env:
   MANIFEST: git://github.com/SKYHAWK-Recovery-Project/platform_manifest_twrp_omni.git -b android-9.0
-  DEVICE: rosy
-  DT_LINK: https://github.com/JamieHoSzeYui/android_recovery_xiaomi_rosy
-  DT_PATH: device/xiaomi/rosy
-  KERNEL_LINK: https://github.com/Pulkit077/kernel_xiaomi_rosy
-  KERNEL_PATH: kernel/xiaomi/rosy
+  DEVICE: C0070WW
+  DT_LINK: https://github.com/twrpdtgen/android_device_blu_C0070WW/tree/sp9832e_1h10_gofu-user-10-QP1A.190711.020-46411-release-keys
+  DT_PATH: device/blu/C0070WW
+  KERNEL_LINK: https://github.com/twrpdtgen/kernel_blu_C0070WW
+  KERNEL_PATH: kernel/blu/C0070WW
   TARGET: recoveryimage
   TZ: Asia/Kolkata
 
